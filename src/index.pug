@@ -3,5 +3,9 @@ html(lang="en")
     head
         meta(charset="utf-8")
         title Sprout
+        script(src="js/goog/base.js")
         script(src="js/main.js")
     body#app
+        script.
+            goog.require('app.devtools');
+            goog.require('app.main');

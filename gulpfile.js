@@ -4,6 +4,7 @@ const gulp = require('gulp');
 const pug = require('gulp-pug');
 const exec = require('child_process').exec;
 const del = require('del');
+const connect = require('gulp-connect');
 
 gulp.task('js', (cb) => {
   exec('lein cljsbuild once', (err, stdout, stderr) => {
@@ -24,4 +25,11 @@ gulp.task('default', ['js', 'html'], () => {
 
 gulp.task('clean', (cb) => {
   del(['out'], cb);
+});
+
+gulp.task('server', () => {
+  connect.server({
+    root: 'out',
+    port: 8044
+  });
 });
